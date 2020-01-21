@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import DUpdate as Updates
+from .models import Update as Update
 # Register your models here.
-admin.site.register(Updates)
+admin.site.register(Update)
