@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404()
 from django.http import HttpResponse, JsonResponse, Http404
 
 from .models import Update
@@ -23,6 +23,17 @@ def details_update_page(request, integer_field):
         raise Http404
     except ValueError:
         raise Http404
+    template_name = 'Updates/details_update_page.html'
+    context = {
+        "object": obj
+    }
+    return render(request, template_name, context)
+
+# * This method does the same job as the above, but in a simpler way
+
+def details_update_page_version2(request, integer_field):
+    print(integer_field.__class__)
+    obj = get_object_or_404(Update, integer_field = integer_field)
     template_name = 'Updates/details_update_page.html'
     context = {
         "object": obj
