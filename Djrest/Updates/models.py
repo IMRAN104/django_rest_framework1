@@ -16,6 +16,8 @@ class Update(models.Model):
         upload_to = upload_update_image, blank = True, null = True)
     updated = models.DateTimeField(auto_now_add=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+    integer_field = models.IntegerField(null=True, blank=True)
+
 
     def __str__(self):
         return self.content or ""
