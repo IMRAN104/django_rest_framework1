@@ -130,3 +130,4 @@ dmypy.json
 Pipfile.lock
 db.sqlite3
 .vscode
+*/.vscode
