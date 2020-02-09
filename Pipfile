@@ -16,6 +16,8 @@ xhtml2pdf = "*"
 reportlab = "*"
 html5lib = "*"
 djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.7"
