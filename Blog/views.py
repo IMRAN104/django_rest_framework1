@@ -6,7 +6,7 @@ from .models import BlogPost
 
 
 def blog_post_details_page(request, post_id):
-    print("Class of post_id: " + post_id.__class__)
+    print("Class of post id is: ", {post_id.__class__})
 
     blog_obj = get_object_or_404(BlogPost, id=post_id)
     #Broad Way of doing the same as above line
