@@ -5,10 +5,7 @@ from django.http import Http404
 from .models import BlogPost
 
 
-def blog_post_details_page(request, slug):
-    print("Class of post id is: ", {slug.__class__})
-
-
+def blog_post_details_view(request, slug):
     # queryset = BlogPost.objects.get(slug = slug)    #returns error, get() returned more than one BlogPost -- it returned 2!
     queryset = BlogPost.objects.filter(slug = slug) 
     if queryset.count() >= 1:
@@ -19,6 +16,17 @@ def blog_post_details_page(request, slug):
     }
     return render(request, template_name, context)
 
+
+def blog_post_create_view(request, slug):
+    return render(request, template_name, context)
+
+
+def blog_post_update_view(request, slug):
+    return render(request, template_name, context)
+
+
+def blog_post_delete_view(request, slug):
+    return render(request, template_name, context)
 
 
 def blog_post_details_page_old(request, post_id):
