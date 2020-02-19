@@ -4,10 +4,26 @@ from django.http import Http404
 # Create your views here.
 from .models import BlogPost
 
+def contact(request):
+    print(request.POST)
+    print(request.user)
+    return render(request, 'Blog/form.html',{'title': 'Contact'})
+
+
+
+def blog_post_list_view(request):
+    queryset = BlogPost.objects.all()
+    template_name = 'Blog/blog_post_list.html'
+    context = {
+        'blog_post_list': queryset,
+        'title'         : 'Blog Posts'
+    }
+    return render(request, template_name, context)
 
 def blog_post_details_view(request, slug):
     # queryset = BlogPost.objects.get(slug = slug)    #returns error, get() returned more than one BlogPost -- it returned 2!
     queryset = BlogPost.objects.filter(slug = slug) 
+    blog_obj = None
     if queryset.count() >= 1:
         blog_obj = queryset.first()    #returns the first object with matching slug
     template_name = 'Blog/blog_post_details.html'
@@ -17,7 +33,11 @@ def blog_post_details_view(request, slug):
     return render(request, template_name, context)
 
 
-def blog_post_create_view(request, slug):
+def blog_post_create_view(request):
+    template_name = 'Blog/blog_post_create.html'
+    context = {
+        'title' : 'Create a New Blog'
+    }
     return render(request, template_name, context)
 
 
