@@ -1,16 +1,16 @@
 {% extends "Base/base.html" %}
 
-{% if title %}
-    <h1>{{ title }}</h1>    
-{% endif %}
-    
-
 {% block content %}
+    {% if title %}
+        <h1>{{ title }}</h1>    
+    {% endif %}
     <form method='POST' action='.'> 
         {% csrf_token %}
-        <input type="text" name="name">
-        <input type="email" name="email">
-        <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        {% comment %} <input type="text" name="name"> {% endcomment %}
+        {% comment %} <input type="email" name="email"> {% endcomment %}
+        {% comment %} <textarea name="content" id="content" cols="30" rows="10"></textarea> {% endcomment %}
+
+        {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
 {% endblock content %}

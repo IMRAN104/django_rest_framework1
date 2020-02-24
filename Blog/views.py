@@ -3,6 +3,8 @@ from django.http import Http404
 
 # Create your views here.
 from .models import BlogPost
+from .forms import BlogPostForm
+
 
 def contact(request):
     print(request.POST)
@@ -34,9 +36,16 @@ def blog_post_details_view(request, slug):
 
 
 def blog_post_create_view(request):
-    template_name = 'Blog/blog_post_create.html'
+    form = BlogPostForm(request.POST or None)
+    if form.is_valid():
+        print(form.cleaned_data)
+        title = form.cleaned_data['title']
+        slug = form.cleaned_data()
+        obj = BlogPost.objects.create(title=title,)
+    template_name = 'Blog/form.html'
     context = {
-        'title' : 'Create a New Blog'
+        'title': 'Create a New Blog',
+        'form': form
     }
     return render(request, template_name, context)
 
